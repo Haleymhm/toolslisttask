@@ -1,0 +1,31 @@
+NOTAS LARAVEL 5.7
+
+# Crear la tabla "posts"
+php artisan make:migration create_posts_table --create posts 
+php artisan migrate
+
+# Agregar el campo "summary" a la tabla "posts"
+php artisan make:migration add_summary_to_posts_table --table="posts"
+
+# Agregar varios campos nuevos a la tabla "users"
+php artisan make:migration add_fields_to_users_table --table="users"
+
+php artisan migrate
+
+#Generar llave de aplicacion
+php artisan key:generate
+
+# Crear el controlador PostsController compatible con REST (resource) 
+php artisan make:controller PostsController --resource
+
+# Crear modelo
+php artisan make:model Nombre_Tabla
+
+# Crear modelo, migracion y el controlador con todos los recursos basicas 
+php artisan make:model Nombre_Tabla -mc --resource
+
+# Activa el sistema de autenticaion de laravel
+php artisan make:auth
+
+# Crear un request para validar los datos de un formulario
+php artisan make:request Nombre_TablaFormRequest

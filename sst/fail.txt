@@ -1,0 +1,8 @@
+/* BOTON ANULAR CONTENIDO EN EL MODULO TIPO DE ACTIVIDAD */
+<form action="{{ route('tipoact.anularcontenido') }}" autocomplete="off" method="POST" style="margin-top:0px; margin-bottom:0px; padding:0; display:inline-block;" >
+    @csrf
+    <input type="hidden" name="idcont" value="{{$contenido->id}}">
+    <input type="hidden" name="posicion" value="{{$contenido->posicion}}">
+    <input type="hidden" name="tipoactuid" value="{{$contenido->tipoactid}}">
+    <button class="btn btn-xs bg-red" ><i class="fa fa-eraser"></i></button>
+</form>

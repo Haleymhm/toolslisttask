@@ -1,0 +1,41 @@
+$request->validate([
+    'unidadopnombre'=>'required|max:250',
+    'numero' => 'required|numeric',
+    'nombreunidad'=>'required|unique|max:250',
+    'fechaInicio' => 'required|date',
+    'status'=>'required|in:A,I',
+    'avatar' => 'dimensions:min_width=100,min_height=200',
+    'photo' => 'mimes:jpeg,bmp,png'
+]);
+
+perfil
+<!-- <a href="{{ route('perfil.edit', Auth::user()->id) }}" class="btn btn-primary btn-flat">Perfil</a>-->
+
+sidebar-mebu
+@can('permisos.index')
+            <li class="{{ active('roles') }}"><a href="{{ route('permiso.index') }}"><i class="menu-icon bg-red fa fa-lock"></i> <span>   Permisos</span></a></li>
+            @endcan
+
+
+
+
+/****** busqueda por muchos tipos de activdad    *****/
+$datos=$request->tipoact;
+                $j=count($datos);
+                $i=0;
+                $sqlwhere=" ";
+                for($i=0; $i < $j; $i++) { 
+                    if($i==0){$sqlwhere="actividads.tipoactividaduid LIKE '".$datos[$i]."'";}
+                    else{$sqlwhere = $sqlwhere ." or actividads.tipoactividaduid LIKE '".$datos[$i]."'"; }
+                    
+                }
+               
+                $sql = "SELECT actividads.id, actividads.actividadinicio, actividads.empresauid, actividads.actividadfin, actividads.actividadcolor, tipoacts.tipoactnombre";
+                $sql = $sql ." FROM actividads";
+                $sql = $sql ." INNER JOIN tipoacts ON actividads.tipoactividaduid=tipoacts.id WHERE ";
+                //$sql = $sql ." actividads.empresauid LIKE '".$uidempresa."'"; 
+                $sql = $sql . $sqlwhere;
+                //dd ( $sql);
+                $actividades =DB::select($sql);
+                //dd ( $actividades);
+                //$sql= $sql." AND useruid LIKE '".0e33f56d-1cdd-4033-a564-96f4e927e12a."'";

@@ -1,0 +1,8 @@
+Manejo de multiple sedes
+Calendario Multiple vistas
+Procesos en 2do Plano
+Exportar datos en excel
+Impresion de formularios en PDF
+Multeple vistas de las actividades(calendario, tablas)
+Indicadores graficos
+
